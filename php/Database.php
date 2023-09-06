@@ -6,7 +6,7 @@ class Database
     public $password = "";
     public $db = "ecom";
     private $mysqli = "";
- 
+
 
     public $message = array(); //
 
@@ -35,10 +35,10 @@ class Database
         if ($exe->num_rows > 0) {
             array_push($this->message, 1);
         } else {
-            array_push($this->message , 0);
+            array_push($this->message, 0);
         }
 
-       return $this->message;
+        return $this->message;
     }
 }
 
