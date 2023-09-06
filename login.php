@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include 'php/Database.php';
 
 
@@ -33,7 +33,7 @@ include 'php/Database.php';
                             </div>
                             <a href="register.php" class="nav-link"> Not a member ? register</a>
                             <div class="form-group">
-                                <input type="submit" name="submit" id="submit" class="submit form-control btn btn-primary mt-3">
+                                <input type="submit" id="submit" class="submit form-control btn btn-primary mt-3" name="login">
                             </div>
                         </form>
                     </div>
@@ -48,16 +48,23 @@ include 'php/Database.php';
 
 <?php
 
-$username = $_POST['username'];
-$password = $_POST['password'];
 
-$result = $db->login($username , $password , "users");
-if($result[0] == 1)
+if(isset($_POST['login']))
 {
-    echo " Successfully logged in";
-} else {
-    echo " Failed to login";
-}
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    
+    $result = $db->login($username , $password , "users");
+    if($result[0] == 1)
+    {
+        $_SESSION['username'] = $username;
+       header('location:index.php');
+    } else {
+        echo " Failed to login";
+    }
+} 
+
 
 
 ?>

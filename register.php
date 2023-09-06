@@ -71,7 +71,7 @@
                             error.html(" You are registed now check your email!");
                         } else if (resp == 2) {
                             error.html(" username already taken by someone else ");
-                        } 
+                        }
 
                         setTimeout(() => {
                             error.html("");
